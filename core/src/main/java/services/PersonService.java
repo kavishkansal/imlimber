@@ -1,12 +1,12 @@
 package services;
 
 import POJO.Person;
-import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
+@Service
 public class PersonService {
 
     private HashMap<String, Person> personHashMap = new HashMap<>();
