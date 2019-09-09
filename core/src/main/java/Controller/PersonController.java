@@ -13,16 +13,21 @@ import java.util.ArrayList;
 public class PersonController {
 
     @Autowired
-    PersonService personService;
+    private PersonService personService;
 
 
     @RequestMapping("/all")
-    public ArrayList<Person> getAll(){
+    public ArrayList<Person> getAll() {
         return personService.getAll();
     }
 
     @RequestMapping("{id}")
-    public  Person getPerson(@PathVariable("id") String id){
-        return personService.getPerson(id);
+    public Person getPerson(@PathVariable("id") String id) {
+        try {
+            return personService.getPerson(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

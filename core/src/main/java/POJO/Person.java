@@ -1,17 +1,36 @@
 package POJO;
 
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter @Setter
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+
+@Entity
+@Table(name = "employee")
+@Getter
+@Setter
 public class Person {
 
-    private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long uuid;
+
+    @Column(name = "id")
+    @NotBlank
+    private String id;
+
+    @Column(name = "first_name")
+    @NotBlank
     private String firstName;
+
+    @Column(name = "last_name")
+    @NotBlank
     private String lastName;
+
+    @Column(name = "age")
+    @NotBlank
     private int age;
 
 }
