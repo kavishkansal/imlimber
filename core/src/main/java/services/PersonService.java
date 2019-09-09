@@ -21,10 +21,10 @@ public class PersonService {
         personHashMap.put("1", p1);
 
         Person p2 = new Person();
-        p1.setId(2);
-        p1.setFirstName("Kavish");
-        p1.setLastName("Kansal");
-        p1.setAge(25);
+        p2.setId(2);
+        p2.setFirstName("Kavish");
+        p2.setLastName("Kansal");
+        p2.setAge(25);
         personHashMap.put("2", p2);
 
     }
