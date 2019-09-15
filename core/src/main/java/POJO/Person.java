@@ -32,7 +32,6 @@ public class Person {
     private String lastName;
 
     @Column(name = "age")
-    @NotBlank
-    private int age;
+    private Integer age;
 
 }
