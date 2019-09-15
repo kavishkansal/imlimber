@@ -12,32 +12,30 @@ import java.util.Optional;
 @Service
 public class PersonService {
 
-    private HashMap<String, Person> personHashMap = new HashMap<>();
-
     @Autowired
     private PersonRepo personRepo;
-
-    PersonService() {
-
-        try {
-            Person p1 = new Person();
-            p1.setId("1");
-            p1.setFirstName("Arish");
-            p1.setLastName("Ballana");
-            p1.setAge(24);
-            persistPerson(p1);
-
-            Person p2 = new Person();
-            p1.setId("2");
-            p1.setFirstName("Kavish");
-            p1.setLastName("Kansal");
-            p1.setAge(25);
-            persistPerson(p2);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
+//
+//    PersonService() {
+//
+//        try {
+//            Person p1 = new Person();
+//            p1.setId("1");
+//            p1.setFirstName("Arish");
+//            p1.setLastName("Ballana");
+//            p1.setAge(24);
+//            persistPerson(p1);
+//
+//            Person p2 = new Person();
+//            p1.setId("2");
+//            p1.setFirstName("Kavish");
+//            p1.setLastName("Kansal");
+//            p1.setAge(25);
+//            persistPerson(p2);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
 
     private void validatePerson(Person person) throws Exception {
         if (person.getFirstName() == null || person.getFirstName().isEmpty()) {
