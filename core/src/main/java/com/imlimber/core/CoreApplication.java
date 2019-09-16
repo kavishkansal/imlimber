@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @Configuration
 @EnableJpaRepositories(basePackages = "Repository")
 @EnableAutoConfiguration
-@ComponentScan({"Controller", "services"})
+@ComponentScan({"Controller", "services", "Security"})
 @EntityScan({"POJO"})
 public class CoreApplication {
 

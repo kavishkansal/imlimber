@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.Constraint;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -19,7 +20,7 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long uuid;
 
-    @Column(name = "id")
+    @Column(name = "id", unique = true)
     @NotBlank
     private String id;
 
