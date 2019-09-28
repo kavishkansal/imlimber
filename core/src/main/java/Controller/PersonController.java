@@ -2,7 +2,11 @@ package Controller;
 
 import POJO.Person;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
+import Exceptions.UnAuthorizedException;
 import services.PersonService;
 
 import java.util.ArrayList;
@@ -26,7 +30,15 @@ public class PersonController {
 
     @RequestMapping("/all")
     public ArrayList<Person> getAll() {
-        return personService.getAll();
+        try{
+        		return personService.getAll();
+        }catch(UnAuthorizedException e){
+        	throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
+        }catch(Exception e){
+        	throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
+        	//e.printStackTrace();
+        	//return null;
+        }
     }
 
     @RequestMapping("{id}")
