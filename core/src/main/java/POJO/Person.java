@@ -15,12 +15,11 @@ import javax.validation.constraints.NotBlank;
 @Setter
 @ToString
 public class Person {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long uuid;
 
-    @Column(name = "id", unique = true)
+    @Column(name = "id",unique=true)
     @NotBlank
     private String id;
 
