@@ -1,12 +1,12 @@
 package services;
 
+import Exceptions.InvalidRequestException;
 import POJO.Person;
 import Repository.PersonRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Optional;
 
 @Service
@@ -37,40 +37,40 @@ public class PersonService {
 //
 //    }
 
-    private void validatePerson(Person person) throws Exception {
+    private void validatePerson(Person person) throws InvalidRequestException {
         if (person.getFirstName() == null || person.getFirstName().isEmpty()) {
-            throw new Exception("Invalid Name");
+            throw new InvalidRequestException("Invalid Name");
         }
 
         if (person.getLastName() == null || person.getLastName().isEmpty()) {
-            throw new Exception("Invalid Name");
+            throw new InvalidRequestException("Invalid Name");
         }
 
         if (person.getAge() <= 0 || person.getAge() >= 150) {
-            throw new Exception("Invalid Age");
+            throw new InvalidRequestException("Invalid Age");
         }
     }
 
-    public void persistPerson(Person person) throws Exception {
+    public void persistPerson(Person person) {
         validatePerson(person);
         personRepo.save(person);
     }
 
-    public Person getPerson(String id) throws Exception {
+    public Person getPerson(String id) {
         Optional<Person> first = personRepo.findAll().stream().filter(x -> x.getId().equalsIgnoreCase(id)).findFirst();
         if (first.isPresent()) {
             return first.get();
         } else {
-            throw new Exception("No such employee found");
+            throw new InvalidRequestException("No such employee found");
         }
     }
 
-    public Person getPerson(Long uuid) throws Exception {
+    public Person getPerson(Long uuid) {
         Optional<Person> byId = personRepo.findById(uuid);
         if (byId.isPresent()) {
             return byId.get();
         } else {
-            throw new Exception("No Such employee found");
+            throw new InvalidRequestException("No Such employee found");
         }
     }
 
